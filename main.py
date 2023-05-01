@@ -56,3 +56,5 @@ data_for_json = Patchlist(dict_with_file_address_and_hash) # передаем с
 
 with open(os.path.join(bundle_dir_path, 'patchlist.json'), 'w', encoding='utf-8') as data_to_write_to_json: # тут указываем место, куда записываем файл, как назвать документ для записи и его формат.
     data_writing = json.dump(data_for_json.__dict__, data_to_write_to_json, sort_keys=True, indent=4, ensure_ascii=False) # собственно, записываем в JSON
+
+print('patchlist.json создан. Пожалуйста, укажите правильную версию patchlist.json вручную')
