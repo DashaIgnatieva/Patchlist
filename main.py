@@ -76,7 +76,7 @@ data_for_json = Patchlist(dict_with_file_address_and_hash) # передаем с
 with open(os.path.join(bundle_dir_path, 'patchlist.json'), 'w', encoding='utf-8') as data_to_write_to_json: # тут указываем место, куда записываем файл, как назвать документ для записи и его формат.
     data_writing = json.dump(data_for_json.__dict__, data_to_write_to_json, sort_keys=True, indent=4, ensure_ascii=False) # собственно, записываем в JSON
 
-address_for_zip = os.path.join(bundle_dir_path, os.path.basename(os.path.normpath(f'{dir_for_pathlist}_path')))
+address_for_zip = os.path.join(bundle_dir_path, os.path.basename(os.path.normpath(f'{dir_for_pathlist}_patch')))
 
 os.mkdir(address_for_zip) # создаем папку, в которую запишем заархивированные файлы
 
