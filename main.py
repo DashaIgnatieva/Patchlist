@@ -50,6 +50,7 @@ def zipfiles(files_addresses, dir_address):
             new_archive = zipfile.ZipFile(f'./{rel_path}.zip', 'w')
             with new_archive as na: # запись одного файла в архив
                 na.write(filename=os.path.join(adress, file), arcname=file,  compress_type=zipfile.ZIP_DEFLATED) # В arcname=filename передаем нужное нам имя файла
+            print(f'Фаил "{rel_path}" записан успешно')
 
 try:
     os.path.isdir(sys.argv[1]) # тут мы пытаемся получить корректный адрес до папки с файлами игры для запуска нашего скрипта
@@ -75,7 +76,7 @@ data_for_json = Patchlist(dict_with_file_address_and_hash) # передаем с
 with open(os.path.join(bundle_dir_path, 'patchlist.json'), 'w', encoding='utf-8') as data_to_write_to_json: # тут указываем место, куда записываем файл, как назвать документ для записи и его формат.
     data_writing = json.dump(data_for_json.__dict__, data_to_write_to_json, sort_keys=True, indent=4, ensure_ascii=False) # собственно, записываем в JSON
 
-address_for_zip = os.path.join(bundle_dir_path,'zipfiles')
+address_for_zip = os.path.join(bundle_dir_path, os.path.basename(os.path.normpath(f'{dir_for_pathlist}_path')))
 
 os.mkdir(address_for_zip) # создаем папку, в которую запишем заархивированные файлы
 
